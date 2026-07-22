@@ -170,7 +170,7 @@ nav.site-nav a:hover{color:var(--marigold);}
   grid-template-columns:repeat(3, 1fr);
   gap:28px;
 }
-.media-item iframe,.media-item .press-thumb{
+.media-item iframe,.media-item .press-thumb,.media-item video{
   width:100%;
   aspect-ratio:4/3;
   border:0;
@@ -242,13 +242,22 @@ nav.site-nav a:hover{color:var(--marigold);}
   aspect-ratio:1/0.85;
   background:repeating-linear-gradient(45deg, #EFE4CC 0 12px, #F7EFE0 12px 24px);
   border:1px solid #E4D9C0;
+  overflow:hidden;
+}
+.gallery-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 25%;
+  display:block;
 }
 .gallery-item .cap{
   position:absolute;
   top:8px;left:8px;right:8px;
   font-size:12px;
-  color:#8A7A5C;
+  color:#fff;
   font-style:italic;
+  text-shadow:0 1px 3px rgba(0,0,0,.75);
 }
 .show-more{
   text-align:center;
