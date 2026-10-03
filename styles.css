@@ -100,10 +100,11 @@ nav.site-nav a{
 nav.site-nav a.active,
 nav.site-nav a:hover{color:var(--marigold);}
 
-/* ================= HERO IMAGE BAND ================= */
+/* ================= HERO IMAGE / VIDEO BAND ================= */
 .hero-band{
+  position:relative;
+  overflow:hidden;
   background:
-    linear-gradient(rgba(36,26,29,.55), rgba(36,26,29,.55)),
     repeating-linear-gradient(135deg, var(--wine) 0 40px, var(--wine-dark) 40px 80px);
   height:clamp(280px, 46vw, 520px);
   display:flex;
@@ -113,7 +114,26 @@ nav.site-nav a:hover{color:var(--marigold);}
   color:var(--paper);
   padding:24px;
 }
+.hero-video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 8%;
+  z-index:0;
+}
+.hero-band::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(rgba(36,26,29,.35), rgba(36,26,29,.35));
+  z-index:1;
+  pointer-events:none;
+}
 .hero-band p{
+  position:relative;
+  z-index:2;
   font-family:'Bebas Neue', sans-serif;
   letter-spacing:0.08em;
   font-size:clamp(20px,3vw,30px);
@@ -215,6 +235,13 @@ nav.site-nav a:hover{color:var(--marigold);}
   font-family:'Bebas Neue', sans-serif;
   letter-spacing:0.1em;
   font-size:14px;
+  overflow:hidden;
+}
+.info-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 20%;
 }
 .info-contact{
   text-align:center;
@@ -259,6 +286,7 @@ nav.site-nav a:hover{color:var(--marigold);}
   object-fit:cover;
   object-position:center 25%;
   display:block;
+  cursor:zoom-in;
 }
 .gallery-item .cap{
   position:absolute;
@@ -280,6 +308,39 @@ nav.site-nav a:hover{color:var(--marigold);}
 }
 @media (max-width:800px){
   .gallery-grid{grid-template-columns:repeat(2, 1fr);}
+}
+
+/* ================= GALLERY LIGHTBOX ================= */
+.lightbox{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(36,26,29,.93);
+  z-index:1000;
+  align-items:center;
+  justify-content:center;
+  padding:40px;
+  cursor:zoom-out;
+}
+.lightbox.active{display:flex;}
+.lightbox img{
+  max-width:90vw;
+  max-height:85vh;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  box-shadow:0 10px 40px rgba(0,0,0,.5);
+  cursor:default;
+}
+.lightbox-close{
+  position:absolute;
+  top:18px;
+  right:28px;
+  color:var(--paper);
+  font-size:38px;
+  line-height:1;
+  cursor:pointer;
+  font-family:'Bebas Neue', sans-serif;
 }
 
 /* ================= FOOTER ================= */
