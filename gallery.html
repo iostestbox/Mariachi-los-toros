@@ -46,18 +46,23 @@
 <section class="gallery-section">
   <div class="gallery-inner">
     <div class="gallery-grid">
-      <div class="gallery-item"><img src="Friends%20(1).jpg" alt="Friends"><div class="cap">Friends</div></div>
-      <div class="gallery-item"><img src="Friends%20(2).jpg" alt="Friends"><div class="cap">Friends</div></div>
-      <div class="gallery-item"><img src="Friends%20(3).jpg" alt="Friends"><div class="cap">Friends</div></div>
-      <div class="gallery-item"><img src="George%2001.jpg" alt="With George Lopez"><div class="cap">With George Lopez</div></div>
-      <div class="gallery-item"><img src="George%20Backstage.jpg" alt="Backstage with George Lopez"><div class="cap">Backstage with George Lopez</div></div>
-      <div class="gallery-item"><img src="Mariachi%20(1).jpg" alt="Mariachi Los Toros"><div class="cap">Mariachi Los Toros</div></div>
-      <div class="gallery-item"><img src="Mariachi%20(2).jpg" alt="Mariachi Los Toros"><div class="cap">Mariachi Los Toros</div></div>
-      <div class="gallery-item"><img src="Guitarron.jpg" alt="Guitarrón"><div class="cap">Guitarrón</div></div>
+      <div class="gallery-item"><img src="Friends%20(1).jpg" alt="Friends" onclick="openLightbox(this.src,this.alt)"><div class="cap">Friends</div></div>
+      <div class="gallery-item"><img src="Friends%20(2).jpg" alt="Friends" onclick="openLightbox(this.src,this.alt)"><div class="cap">Friends</div></div>
+      <div class="gallery-item"><img src="Friends%20(3).jpg" alt="Friends" onclick="openLightbox(this.src,this.alt)"><div class="cap">Friends</div></div>
+      <div class="gallery-item"><img src="George%2001.jpg" alt="With George Lopez" onclick="openLightbox(this.src,this.alt)"><div class="cap">With George Lopez</div></div>
+      <div class="gallery-item"><img src="George%20Backstage.jpg" alt="Backstage with George Lopez" onclick="openLightbox(this.src,this.alt)"><div class="cap">Backstage with George Lopez</div></div>
+      <div class="gallery-item"><img src="Mariachi%20(1).jpg" alt="Mariachi Los Toros" onclick="openLightbox(this.src,this.alt)"><div class="cap">Mariachi Los Toros</div></div>
+      <div class="gallery-item"><img src="Mariachi%20(2).jpg" alt="Mariachi Los Toros" onclick="openLightbox(this.src,this.alt)"><div class="cap">Mariachi Los Toros</div></div>
+      <div class="gallery-item"><img src="Guitarron.jpg" alt="Guitarrón" onclick="openLightbox(this.src,this.alt)"><div class="cap">Guitarrón</div></div>
     </div>
     <div class="show-more"><a href="#">Show More</a></div>
   </div>
 </section>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
 
 <footer class="site-footer">
   <div class="foot-brand">MARIACHI LOS TOROS</div>
@@ -73,6 +78,20 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  function openLightbox(src, alt){
+    var img = document.getElementById('lightbox-img');
+    img.src = src;
+    img.alt = alt;
+    document.getElementById('lightbox').classList.add('active');
+  }
+  function closeLightbox(e){
+    if(e && e.target && e.target.id === 'lightbox-img') return;
+    document.getElementById('lightbox').classList.remove('active');
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeLightbox();
+  });
 </script>
 
 </body>
